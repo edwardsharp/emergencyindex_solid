@@ -29,11 +29,13 @@ function useProviderValue() {
   const prevProject = () => {
     setCurrentProjectIdx((prev) => Math.max(0, prev - 1));
     setProject(projects()?.find((_, idx) => idx === currentProjectIdx()));
+    window.scrollTo({ top: 1 });
   };
 
   const nextProject = () => {
     setCurrentProjectIdx((prev) => Math.min(projects()?.length || 0, prev + 1));
     setProject(projects()?.find((_, idx) => idx === currentProjectIdx()));
+    window.scrollTo({ top: 1 });
   };
 
   return { projects, project, setProject, prevProject, nextProject };
