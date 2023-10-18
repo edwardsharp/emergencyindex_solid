@@ -28,24 +28,11 @@ function TOC() {
   createEffect(() => {
     if (show()) {
       const idx = currentProjectIdx();
-      console.log('zomg scroll into view!!');
       const elem = document.querySelector(`[data-idx='${idx}']`);
       if (elem) {
         elem.scrollIntoView({
           block: 'center',
         });
-        console.log(
-          'elem.scrollTop:',
-          document.querySelector('.TOCListWrapper')?.scrollTop
-        );
-        // .scrollBy({
-        //   top: 100,
-        //   left: 100,
-        //   behavior: "smooth",
-        // });
-        // document
-        //   .querySelector('.TOCListWrapper')
-        //   ?.scrollBy({ top: 64, behavior: 'smooth' });
       }
     }
   });
@@ -75,6 +62,7 @@ function TOC() {
               onClick={() => {
                 setProject(project);
                 setCurrentProjectIdx(idx);
+                setShow(false);
               }}
               title={`${project.title} -- ${project.contributor}`}
               data-idx={idx()}
