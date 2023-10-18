@@ -1,20 +1,19 @@
-import { Accessor } from 'solid-js';
-import IProject from './project.d';
+import { Show } from 'solid-js';
 import './Tags.css';
+import { useProject } from '../providers/projectContext';
 
-interface Props {
-  project: Accessor<IProject>;
-}
+function Tags() {
+  const { project } = useProject();
 
-function Tags(props: Props) {
-  const { project } = props;
   // return <>{props.project.tags?.join(", ")}</>;
   function setQuery(q: string | undefined) {
     console.log('#TODO meta setQuery()', q);
   }
   return (
-    <div class="Tags">
-      {/* <div>
+    <Show when={project()}>
+      {(project) => (
+        <div class="Tags">
+          {/* <div>
         <a
           data-tooltip="Edit This Project on GitHub"
           data-position="top"
@@ -40,27 +39,29 @@ function Tags(props: Props) {
         </a>
       </div> */}
 
-      {project().tags && (
-        <ul>
-          {project().tags?.map((tag) => (
-            <li>
-              <a
-                class="hotlink chip"
-                href="#"
-                data-tag={tag}
-                onClick={(event) => {
-                  event.preventDefault();
-                  event.stopPropagation();
-                  setQuery(tag);
-                }}
-              >
-                {tag}
-              </a>
-            </li>
-          ))}
-        </ul>
+          {project().tags && (
+            <ul>
+              {project().tags?.map((tag) => (
+                <li>
+                  <a
+                    class="hotlink chip"
+                    href="#"
+                    data-tag={tag}
+                    onClick={(event) => {
+                      event.preventDefault();
+                      event.stopPropagation();
+                      setQuery(tag);
+                    }}
+                  >
+                    {tag}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
       )}
-    </div>
+    </Show>
   );
 }
 

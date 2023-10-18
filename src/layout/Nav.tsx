@@ -1,16 +1,13 @@
-import { Accessor, Setter } from 'solid-js';
-import IProject from '../project/project.d';
 import './Nav.css';
 import Query from './Query';
 import TOC from './TOC';
 
-interface Props {
-  projects: Accessor<IProject[] | undefined>;
-  project: Accessor<IProject | undefined>;
-  setProject: Setter<IProject | undefined>;
-}
-function Nav(props: Props) {
-  const { projects, project, setProject } = props;
+// interface Props {
+//   projects: Accessor<IProject[] | undefined>;
+//   project: Accessor<IProject | undefined>;
+//   setProject: Setter<IProject | undefined>;
+// }
+function Nav() {
   return (
     <div class="nav">
       <div>
@@ -24,10 +21,10 @@ function Nav(props: Props) {
       <div></div>
       <div>
         <div class="query">
-          <Query project={project} />
+          <Query />
         </div>
         <div class="page">
-          <TOC projects={projects} project={project} setProject={setProject} />
+          <TOC />
         </div>
       </div>
     </div>

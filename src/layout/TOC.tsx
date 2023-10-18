@@ -1,16 +1,9 @@
-import {
-  Accessor,
-  createMemo,
-  createSignal,
-  For,
-  Setter,
-  Show,
-} from 'solid-js';
+import { createMemo, createSignal, For, Show } from 'solid-js';
 import clickOutside from './click-outside';
 clickOutside;
 import './TOC.css';
-import IProject from '../project/project.d';
 import { volume2VOL } from '../utilz/utilz';
+import { useProject } from '../providers/projectContext';
 
 declare module 'solid-js' {
   namespace JSX {
@@ -20,19 +13,13 @@ declare module 'solid-js' {
   }
 }
 
-interface Props {
-  projects: Accessor<IProject[] | undefined>;
-  project: Accessor<IProject | undefined>;
-  setProject: Setter<IProject | undefined>;
-}
-
-function TOC(props: Props) {
-  const { projects, setProject } = props;
+function TOC() {
+  const { project, projects, setProject } = useProject();
 
   const currentIdx = createMemo(() => {
-    const project = props.project();
-    if (!project) return;
-    return projects()?.indexOf(project);
+    const p = project();
+    if (!p) return;
+    return projects()?.indexOf(p);
   });
 
   const [show, setShow] = createSignal(false);
@@ -42,7 +29,7 @@ function TOC(props: Props) {
       when={show()}
       fallback={
         <div class="TOC nav-hover" onClick={(e) => setShow(true)}>
-          p. {props.project()?.pages}
+          p. {project()?.pages}
         </div>
       }
     >

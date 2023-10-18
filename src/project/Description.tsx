@@ -1,23 +1,23 @@
-import IProject from './project.d';
+import { Show } from 'solid-js';
+import { useProject } from '../providers/projectContext';
 import './Description.css';
-import { Accessor } from 'solid-js';
-interface Props {
-  project: Accessor<IProject>;
-}
 
-function Description(props: Props) {
-  const { project } = props;
+function Description() {
+  const { project } = useProject();
 
   return (
-    <div class="Description">
-      <h5 class="title">
-        <strong>{project().title}</strong>
-      </h5>
+    <Show when={project()}>
+      {(project) => (
+        <div class="Description">
+          <h5 class="title">
+            <strong>{project().title}</strong>
+          </h5>
+          <h6 class="contributor">{project().contributor}</h6>
 
-      <h6 class="contributor">{project().contributor}</h6>
-
-      <div class="content" innerHTML={project().content}></div>
-    </div>
+          <div class="content" innerHTML={project().content}></div>
+        </div>
+      )}
+    </Show>
   );
 }
 

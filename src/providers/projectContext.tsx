@@ -3,15 +3,43 @@ import {
   createSignal,
   useContext,
   ParentComponent,
+  createResource,
+  createEffect,
 } from 'solid-js';
 import IProject from '../project/project.d';
 
+const fetchProjects = async () => (await fetch('/data.json')).json();
+
 function useProviderValue() {
+  const [projects] = createResource<IProject[]>(fetchProjects);
+
+  createEffect(() => {
+    const pz = projects();
+    if (!project() && pz?.length) {
+      console.log(
+        '[projectContext] ZOMG NO PROJECT! so gonna init one. p[0]?',
+        pz[0]
+      );
+      setProject(pz[0]);
+    }
+  });
   const [project, setProject] = createSignal<IProject | null>();
-  return { project, setProject };
+  const [currentProjectIdx, setCurrentProjectIdx] = createSignal(0);
+
+  const prevProject = () => {
+    setCurrentProjectIdx((prev) => Math.max(0, prev - 1));
+    setProject(projects()?.find((_, idx) => idx === currentProjectIdx()));
+  };
+
+  const nextProject = () => {
+    setCurrentProjectIdx((prev) => Math.min(projects()?.length || 0, prev + 1));
+    setProject(projects()?.find((_, idx) => idx === currentProjectIdx()));
+  };
+
+  return { projects, project, setProject, prevProject, nextProject };
 }
 
-export type ContextType = ReturnType<typeof useProviderValue>;
+type ContextType = ReturnType<typeof useProviderValue>;
 
 const ProjectContext = createContext<ContextType | undefined>(undefined);
 
@@ -32,11 +60,3 @@ export function useProject() {
   }
   return context;
 }
-
-export function useIsProject() {
-  return useProject().project;
-}
-
-// export function useSetProject() {
-//   return useProject()?.setProject;
-// }
