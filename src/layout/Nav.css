@@ -70,6 +70,7 @@
   .nav > div {
     background-color: reset;
     border-radius: 1em;
+    line-height: 3.25em;
   }
 
   .nav .query {
