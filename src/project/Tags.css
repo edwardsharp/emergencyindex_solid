@@ -1,0 +1,65 @@
+.Tags {
+  color: white;
+  display: flex;
+  justify-content: flex-end;
+  min-height: 50px;
+}
+.Tags > div {
+  width: 25vw;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.Tags .chip {
+  background-color: gray;
+  color: white;
+  padding: 6px 10px;
+  text-decoration: none;
+  border-radius: 666px;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+.Tags .chip:hover {
+  background-color: black;
+  color: white;
+}
+
+.Tags ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+}
+
+.Tags ul > li {
+  min-height: 35px;
+  margin-left: 3px;
+  margin-right: 3px;
+}
+
+.Tags ul > li > a {
+  min-height: 35px;
+  margin: 0;
+}
+
+@media (max-width: 600px) {
+  .Tags {
+    padding-top: 10px;
+    /* max-height: 180px; */
+    overflow: auto;
+  }
+  .Tags > div {
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .Tags .chip {
+    font-size: 12px;
+  }
+}

@@ -1,30 +1,35 @@
-import Meta from "./Meta";
-import Description from "./Description";
-import Tags from "./Tags";
+import { Accessor, Show } from 'solid-js';
+import IProject from './project.d';
+import Meta from './Meta';
+import Description from './Description';
+import Tags from './Tags';
 
-import IProject from "./project.d";
-
+import './Project.css';
 interface Props {
-  project: IProject;
+  project: Accessor<IProject | null | undefined>;
 }
 
 function Project(props: Props) {
-  const { project } = props;
-  // if (!project) return null;
   return (
-    <article class="Project">
-      <div class="flex">
-        <header>
-          <Meta project={project} />
-        </header>
-        <section>
-          <Description project={project} />
-        </section>
-      </div>
-      <footer>
-        <Tags project={project} />
-      </footer>
-    </article>
+    <Show when={props.project()}>
+      {(p) => (
+        <>
+          <article class="Project">
+            <div class="flex">
+              <header>
+                <Meta project={p} />
+              </header>
+              <section>
+                <Description project={p} />
+              </section>
+            </div>
+            <footer>
+              <Tags project={p} />
+            </footer>
+          </article>
+        </>
+      )}
+    </Show>
   );
 }
 

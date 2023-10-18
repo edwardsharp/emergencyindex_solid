@@ -1,7 +1,7 @@
 export default interface IProject {
   layout?: string;
   url?: string;
-  volume?: string;
+  volume?: number | string;
   image?: string;
   photo_credit?: string;
   title?: string;

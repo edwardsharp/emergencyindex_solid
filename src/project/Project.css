@@ -1,0 +1,138 @@
+.Project {
+  color: black;
+  padding: 1em;
+  box-sizing: border-box;
+  /* height: 150vh; */
+  padding: 1em;
+}
+
+.Project .flex {
+  display: flex;
+  flex-direction: row;
+}
+
+.Project a {
+  margin-left: 10px;
+  margin-right: 10px;
+  color: gray;
+}
+.Project a:hover,
+.Project .hotlink:hover {
+  color: hotpink;
+  background-color: black;
+  cursor: pointer;
+}
+
+.Project ul {
+  list-style: none;
+  display: inline-block;
+}
+
+.Project ul li {
+  display: inline-block;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.Project footer {
+  margin-top: 1em;
+}
+
+/* legacy cruft #TODO: tidy this shit! */
+
+blockquote {
+  border: none;
+  margin: 0;
+  padding-left: 2rem;
+}
+
+.description {
+  word-break: break-word;
+}
+
+.description p {
+  margin: 1rem 0;
+}
+
+.material-placeholder {
+  margin-top: 1em;
+  min-height: 190px;
+}
+
+.project-load:hover {
+  background: black;
+  color: black;
+}
+
+.label {
+  color: #9e9e9e;
+}
+
+.select2-container {
+  width: 100% !important;
+}
+
+.project-pub {
+  margin-left: 33%;
+}
+
+.sticky-nav {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  background: white;
+  z-index: 4;
+}
+
+.sticky-nav-2 {
+  top: 48px;
+  z-index: 3;
+}
+
+.sticky-nav-3 {
+  top: 100px;
+  z-index: 2;
+}
+
+#scrollspy-nav .active {
+  color: hotpink;
+  font-weight: 600;
+}
+
+.section.scrollspy {
+  min-height: 100vh;
+  margin-bottom: 75vh;
+}
+
+.nav-search-row {
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+  max-width: 280px;
+}
+
+.nav-search-row input[type='search'] {
+  height: 3.5rem;
+}
+
+#project_search .input-field {
+  display: flex;
+  align-items: center;
+}
+
+.all-projects {
+  display: flex;
+  justify-content: space-between;
+}
+.all-projects-chip {
+  margin-top: 1.5em;
+}
+
+@media (max-width: 600px) {
+  .Project .flex {
+    flex-direction: column;
+  }
+
+  .Project header {
+    margin-bottom: 1em;
+  }
+}

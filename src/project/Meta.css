@@ -1,0 +1,169 @@
+.Meta {
+  color: black;
+  overflow-wrap: break-word;
+  margin-left: 1em;
+  box-sizing: border-box;
+  width: 25vw;
+}
+
+.Meta a {
+  color: gray;
+}
+
+.Meta a:hover {
+  color: black;
+  background-color: white;
+}
+
+.Meta p {
+  font-size: 0.7em;
+}
+
+.Meta .title {
+  font-size: 19px;
+  text-transform: uppercase;
+}
+
+.Meta .contributor {
+  font-size: 17px;
+  font-weight: 100;
+  margin: 0.5em 0;
+  text-transform: uppercase;
+}
+
+.Meta .home {
+  margin: 1em 0;
+  font-size: 1em;
+}
+
+.Meta .place {
+  display: inline-block;
+  width: 100%;
+  margin: 0.5em 0;
+}
+
+.Meta .contact {
+  font-size: 14px;
+}
+
+.Meta .links {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.Meta .links span {
+  width: 100%;
+}
+
+.Meta a.link {
+  margin: 0;
+  font-size: 14px;
+  display: inline-block;
+  width: 100%;
+}
+
+.Meta .project-img.active {
+  max-width: none;
+  max-height: none;
+}
+.Meta .project-img {
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  filter: grayscale(1);
+}
+
+.Meta .photo-credit {
+  font-size: 12px;
+  position: absolute;
+  text-align: right;
+  -moz-transform: rotate(-90deg) translate(6px, -100%);
+  -webkit-transform: rotate(-90deg) translate(6px, -100%);
+  -o-transform: rotate(-90deg) translate(6px, -100%);
+  -ms-transform: rotate(-90deg) translate(6px, -100%);
+  transform: rotate(-90deg) translate(6px, -100%);
+  -ms-transform-origin: left top;
+  -webkit-transform-origin: left top;
+  transform-origin: left top;
+  max-width: 20vw;
+}
+
+.Meta .project-collaborators {
+  margin-top: 0;
+  font-size: 0.9em;
+}
+
+.Meta .project-collaborators .hotlink {
+  width: 100%;
+}
+
+.project-name-with-collaborators {
+  margin-bottom: 0;
+}
+
+@media (max-width: 600px) {
+  .Meta {
+    margin-left: 0.5em;
+    width: 100%;
+  }
+
+  .Meta p {
+    font-size: 0.9em;
+  }
+
+  .right-panel {
+    padding-left: 0.5rem !important;
+    padding-right: 1em !important;
+  }
+
+  .right-panel .title,
+  .right-panel .contributor {
+    display: none;
+  }
+
+  .Meta .contributor {
+    font-size: 1.33rem;
+    font-weight: 100;
+    margin: 0.25em 0;
+  }
+  .Meta .title {
+    font-size: 1.66rem;
+    margin: 0.75em 0;
+  }
+
+  .project-img {
+    max-height: none;
+  }
+  .Meta .photo-credit {
+    max-width: none;
+  }
+}
+
+@media (min-width: 1281px) {
+  .Meta p,
+  .Meta .photo-credit {
+    font-size: 1em;
+  }
+  .description code,
+  .description kbd,
+  .description pre,
+  .description samp {
+    font-size: 22px;
+  }
+  .right-panel .title {
+    font-size: 30px;
+  }
+
+  .right-panel .contributor {
+    font-size: 28px;
+  }
+  .Meta .contributor {
+    font-size: 22px;
+  }
+
+  .Meta .title {
+    font-size: 24px;
+  }
+}

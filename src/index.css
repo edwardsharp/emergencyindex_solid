@@ -1,4 +1,12 @@
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
+}
+
+body {
+  font-family: verdana, arial, helvetica, sans-serif;
+}
+#root {
+  margin-bottom: 5em;
 }
