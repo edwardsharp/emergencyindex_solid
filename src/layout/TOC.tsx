@@ -1,4 +1,4 @@
-import { createMemo, createSignal, For, Show } from 'solid-js';
+import { createEffect, createSignal, For, Show } from 'solid-js';
 import clickOutside from './click-outside';
 clickOutside;
 import './TOC.css';
@@ -14,15 +14,22 @@ declare module 'solid-js' {
 }
 
 function TOC() {
-  const { project, projects, setProject } = useProject();
-
-  const currentIdx = createMemo(() => {
-    const p = project();
-    if (!p) return;
-    return projects()?.indexOf(p);
-  });
+  const {
+    project,
+    projects,
+    setProject,
+    currentProjectIdx,
+    setCurrentProjectIdx,
+  } = useProject();
 
   const [show, setShow] = createSignal(false);
+
+  createEffect(() => {
+    if (show()) {
+      const idx = currentProjectIdx();
+      document.querySelector(`[data-idx='${idx}']`)?.scrollIntoView();
+    }
+  });
 
   return (
     <Show
@@ -34,18 +41,22 @@ function TOC() {
       }
     >
       <div class="TOCListWrapper">
-        <For each={projects()} fallback={<div>Loading...</div>}>
+        <For each={projects()} fallback={<div>no projects!</div>}>
           {(project, idx) => (
             <div
               class="TOCRow"
               use:clickOutside={() => setShow(false)}
               style={{
                 'border-left': `${
-                  currentIdx() === idx() ? '5px solid black' : 'none'
+                  currentProjectIdx() === idx() ? '5px solid black' : 'none'
                 }`,
               }}
-              onClick={() => setProject(project)}
+              onClick={() => {
+                setProject(project);
+                setCurrentProjectIdx(idx);
+              }}
               title={`${project.title} -- ${project.contributor}`}
+              data-idx={idx()}
             >
               <div class="volume-pages">
                 <div>{volume2VOL(project.volume)}</div>

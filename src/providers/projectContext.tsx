@@ -16,10 +16,6 @@ function useProviderValue() {
   createEffect(() => {
     const pz = projects();
     if (!project() && pz?.length) {
-      console.log(
-        '[projectContext] ZOMG NO PROJECT! so gonna init one. p[0]?',
-        pz[0]
-      );
       setProject(pz[0]);
     }
   });
@@ -38,7 +34,15 @@ function useProviderValue() {
     window.scrollTo({ top: 1 });
   };
 
-  return { projects, project, setProject, prevProject, nextProject };
+  return {
+    projects,
+    currentProjectIdx,
+    setCurrentProjectIdx,
+    project,
+    setProject,
+    prevProject,
+    nextProject,
+  };
 }
 
 type ContextType = ReturnType<typeof useProviderValue>;
