@@ -9,9 +9,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "lodash.debounce": "^4.0.8",
     "solid-js": "^1.7.8"
   },
   "devDependencies": {
+    "@types/lodash.debounce": "^4.0.8",
     "typescript": "^5.0.2",
     "vite": "^4.4.5",
     "vite-plugin-solid": "^2.7.0"

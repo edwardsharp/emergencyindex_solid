@@ -4,6 +4,7 @@ clickOutside;
 import './TOC.css';
 import { volume2VOL } from '../utilz/utilz';
 import { useProject } from '../providers/projectContext';
+import Search from './Search';
 
 declare module 'solid-js' {
   namespace JSX {
@@ -27,7 +28,25 @@ function TOC() {
   createEffect(() => {
     if (show()) {
       const idx = currentProjectIdx();
-      document.querySelector(`[data-idx='${idx}']`)?.scrollIntoView();
+      console.log('zomg scroll into view!!');
+      const elem = document.querySelector(`[data-idx='${idx}']`);
+      if (elem) {
+        elem.scrollIntoView({
+          block: 'center',
+        });
+        console.log(
+          'elem.scrollTop:',
+          document.querySelector('.TOCListWrapper')?.scrollTop
+        );
+        // .scrollBy({
+        //   top: 100,
+        //   left: 100,
+        //   behavior: "smooth",
+        // });
+        // document
+        //   .querySelector('.TOCListWrapper')
+        //   ?.scrollBy({ top: 64, behavior: 'smooth' });
+      }
     }
   });
 
@@ -40,12 +59,14 @@ function TOC() {
         </div>
       }
     >
-      <div class="TOCListWrapper">
+      <div class="TOCListWrapper" use:clickOutside={() => setShow(false)}>
+        <Search />
+
+        <div class="TOCRow TOCFirstRow"></div>
         <For each={projects()} fallback={<div>no projects!</div>}>
           {(project, idx) => (
             <div
               class="TOCRow"
-              use:clickOutside={() => setShow(false)}
               style={{
                 'border-left': `${
                   currentProjectIdx() === idx() ? '5px solid black' : 'none'

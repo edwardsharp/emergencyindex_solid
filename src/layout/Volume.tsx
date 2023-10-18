@@ -4,7 +4,8 @@ import Project from '../project/Project';
 import { useProject } from '../providers/projectContext';
 
 function Volume() {
-  const { projects, prevProject, nextProject } = useProject();
+  const { allProjects, prevProject, nextProject, searchInputFocused } =
+    useProject();
 
   onMount(() => {
     // touch gesture detection stuff
@@ -62,6 +63,7 @@ function Volume() {
 
     // key nav stuff
     const keydown = (event: KeyboardEvent) => {
+      if (searchInputFocused()) return;
       switch (event.key) {
         case 'ArrowLeft':
           prevProject();
@@ -82,7 +84,7 @@ function Volume() {
   });
 
   return (
-    <Show when={!projects.loading} fallback={<div>L O A D I N G . . .</div>}>
+    <Show when={!allProjects.loading} fallback={<div>L O A D I N G . . .</div>}>
       <Project />
       <Nav />
     </Show>

@@ -1,10 +1,15 @@
-import './Query.css';
-import { volume2VOL } from '../utilz/utilz';
+import { Show } from 'solid-js';
+
 import { useProject } from '../providers/projectContext';
 
-function Query() {
-  const { project } = useProject();
-  return <div class="Query nav-hover">{volume2VOL(project()?.volume)}</div>;
+export function Query() {
+  const { query } = useProject();
+
+  return (
+    <Show when={query()}>
+      <div>🔎 {query()}</div>
+    </Show>
+  );
 }
 
 export default Query;
