@@ -66,12 +66,16 @@ function useProviderValue() {
     if (!project()) {
       const pz = projects();
       if (pz?.length) {
-        setProject(pz[0]);
+        // start with most recent project
+        setProject(pz[(allProjects()?.length || 1) - 1]);
+        setCurrentProjectIdx((allProjects()?.length || 1) - 1);
         return;
       }
       const allPz = allProjects();
       if (allPz?.length) {
-        setProject(allPz[0]);
+        // start with most recent project
+        setProject(allPz[(allProjects()?.length || 1) - 1]);
+        setCurrentProjectIdx((allProjects()?.length || 1) - 1);
         return;
       }
     }
