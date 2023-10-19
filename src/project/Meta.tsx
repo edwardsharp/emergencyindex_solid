@@ -31,7 +31,20 @@ function Meta() {
           </h5>
 
           <p>
-            <span class="first_performed">
+            <span
+              class="first_performed hotlink"
+              onclick={() =>
+                search(
+                  project()
+                    .first_performed?.replace('first performed on ', '')
+                    .replace(project().volume?.toString() || '', '')
+                    .split(',')[0],
+                  ['first_performed']
+                )
+              }
+              title={`see all projects first performed on this day`}
+              tabIndex={0}
+            >
               {project().volume?.toString() === '2011' && 'first performed on '}
               {project().first_performed}
             </span>
@@ -43,14 +56,24 @@ function Meta() {
                 event.stopPropagation();
                 search(project().place, ['place']);
               }}
-              title={`search all projects for place: ${project().place}`}
+              title={`see all projects for place: ${project().place}`}
               tabIndex={0}
             >
               {project().place}
             </span>
 
-            <br />
-            {project().times_performed}
+            <span
+              class="times_performed hotlink"
+              onClick={(event) => {
+                event.preventDefault();
+                event.stopPropagation();
+                search(project().volume?.toString(), ['volume']);
+              }}
+              title={`see all projects from volume ${project().volume}`}
+              tabIndex={0}
+            >
+              {project().times_performed}
+            </span>
           </p>
 
           <h6
@@ -60,9 +83,7 @@ function Meta() {
               event.stopPropagation();
               search(project().contributor, ['contributor']);
             }}
-            title={`search all projects for contributor: ${
-              project().contributor
-            }`}
+            title={`see all projects for contributor: ${project().contributor}`}
             tabIndex={0}
           >
             {project().contributor}
@@ -78,7 +99,7 @@ function Meta() {
                     event.stopPropagation();
                     search(collaborator, ['collaborators']);
                   }}
-                  title={`search all projects for collaborators: ${collaborator}`}
+                  title={`see all projects for collaborators: ${collaborator}`}
                   tabIndex={0}
                 >
                   {collaborator}
@@ -95,7 +116,7 @@ function Meta() {
               event.stopPropagation();
               search(project().home, ['home']);
             }}
-            title={`search all projects for home: ${project().home}`}
+            title={`see all projects for home: ${project().home}`}
             tabIndex={0}
           >
             {project().home}

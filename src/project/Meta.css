@@ -95,7 +95,8 @@
   font-size: 0.9em;
 }
 
-.Meta .project-collaborators .hotlink {
+.Meta .hotlink {
+  display: inline-block;
   width: 100%;
 }
 

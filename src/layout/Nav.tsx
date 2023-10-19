@@ -1,4 +1,5 @@
 // import { For } from 'solid-js';
+import { Show } from 'solid-js';
 import { useProject } from '../providers/projectContext';
 import { volume2VOL } from '../utilz/utilz';
 import './Nav.css';
@@ -6,7 +7,8 @@ import Query from './Query';
 import TOC from './TOC';
 
 function Nav() {
-  const { project, prevProject, nextProject } = useProject();
+  const { project, prevProject, nextProject, showTOC, setShowTOC } =
+    useProject();
   return (
     <>
       <div class="page-bottom-nav">
@@ -46,17 +48,25 @@ function Nav() {
             </em>
           </div>
         </div>
-
-        <div class="nav-right-container">
-          <div class="query">
-            <Query />
+        <Show when={!showTOC()}>
+          <div
+            class="nav-right-container nav-hover"
+            onClick={() => setShowTOC(true)}
+            title="open table of contents"
+            tabIndex={0}
+          >
+            <div class="query">
+              <Query />
+            </div>
+            <div class="volume">{volume2VOL(project()?.volume)}</div>
+            <div class="page">
+              <div class="TOC">p. {project()?.pages}</div>
+            </div>
           </div>
-          <div class="volume">{volume2VOL(project()?.volume)}</div>
-          <div class="page">
-            <TOC />
-          </div>
-        </div>
+        </Show>
       </div>
+
+      <TOC />
     </>
   );
 }

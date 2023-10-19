@@ -11,7 +11,7 @@
 }
 .page-bottom-nav > .query {
   font-size: 0.5em;
-  display: none;;
+  display: none;
 }
 /* .page-bottom-nav .browse {
   display: flex;
@@ -91,6 +91,7 @@
   .page-bottom-nav > .query {
     font-size: 0.4em;
     display: flex;
+    text-align: center;
   }
   /* .page-bottom-nav .volume {
     font-size: 0.5em;

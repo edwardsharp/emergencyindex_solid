@@ -20,6 +20,7 @@ const defaultProjectKeys = [
   'home',
   'tags',
   'volume',
+  'first_performed',
 ] as const;
 type ProjectKeys = (typeof defaultProjectKeys)[number];
 const searchKeyLabels = ['global', ...defaultProjectKeys] as const;
@@ -44,6 +45,8 @@ function mapIconToSearchKeyLabel(key: ProjectKeyLabels) {
       return '🏷️';
     case 'volume':
       return '📚';
+    case 'first_performed':
+      return '🗓️';
     default:
       return '🔎';
   }

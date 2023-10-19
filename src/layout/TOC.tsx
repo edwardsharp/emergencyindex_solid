@@ -16,7 +16,6 @@ declare module 'solid-js' {
 
 function TOC() {
   const {
-    project,
     projects,
     setProject,
     currentProjectIdx,
@@ -38,18 +37,7 @@ function TOC() {
   });
 
   return (
-    <Show
-      when={showTOC()}
-      fallback={
-        <div
-          class="TOC nav-hover"
-          onClick={() => setShowTOC(true)}
-          tabIndex={0}
-        >
-          p. {project()?.pages}
-        </div>
-      }
-    >
+    <Show when={showTOC()}>
       <div class="TOCListWrapper" use:clickOutside={() => setShowTOC(false)}>
         <Search />
 
