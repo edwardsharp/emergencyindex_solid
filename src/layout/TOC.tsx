@@ -21,12 +21,12 @@ function TOC() {
     setProject,
     currentProjectIdx,
     setCurrentProjectIdx,
+    showTOC,
+    setShowTOC,
   } = useProject();
 
-  const [show, setShow] = createSignal(false);
-
   createEffect(() => {
-    if (show()) {
+    if (showTOC()) {
       const idx = currentProjectIdx();
       const elem = document.querySelector(`[data-idx='${idx}']`);
       if (elem) {
@@ -39,17 +39,16 @@ function TOC() {
 
   return (
     <Show
-      when={show()}
+      when={showTOC()}
       fallback={
-        <div class="TOC nav-hover" onClick={(e) => setShow(true)}>
+        <div class="TOC nav-hover" onClick={() => setShowTOC(true)}>
           p. {project()?.pages}
         </div>
       }
     >
-      <div class="TOCListWrapper" use:clickOutside={() => setShow(false)}>
+      <div class="TOCListWrapper" use:clickOutside={() => setShowTOC(false)}>
         <Search />
 
-        <div class="TOCRow TOCFirstRow"></div>
         <For each={projects()} fallback={<div>no projects!</div>}>
           {(project, idx) => (
             <div
@@ -62,7 +61,7 @@ function TOC() {
               onClick={() => {
                 setProject(project);
                 setCurrentProjectIdx(idx);
-                setShow(false);
+                setShowTOC(false);
               }}
               title={`${project.title} -- ${project.contributor}`}
               data-idx={idx()}

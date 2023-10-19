@@ -3,12 +3,8 @@ import './Tags.css';
 import { useProject } from '../providers/projectContext';
 
 function Tags() {
-  const { project } = useProject();
+  const { project, search } = useProject();
 
-  // return <>{props.project.tags?.join(", ")}</>;
-  function setQuery(q: string | undefined) {
-    console.log('#TODO meta setQuery()', q);
-  }
   return (
     <Show when={project()}>
       {(project) => (
@@ -50,8 +46,9 @@ function Tags() {
                     onClick={(event) => {
                       event.preventDefault();
                       event.stopPropagation();
-                      setQuery(tag);
+                      search(tag, ['tags']);
                     }}
+                    title={`search all projects tagged with: ${tag}`}
                   >
                     {tag}
                   </a>

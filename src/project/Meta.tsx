@@ -3,10 +3,7 @@ import './Meta.css';
 import { useProject } from '../providers/projectContext';
 
 function Meta() {
-  const { project } = useProject();
-  function setQuery(q: string | undefined) {
-    console.log('#TODO: setQuery()', q);
-  }
+  const { project, search } = useProject();
 
   return (
     <Show when={project()}>
@@ -44,8 +41,9 @@ function Meta() {
               onClick={(event) => {
                 event.preventDefault();
                 event.stopPropagation();
-                setQuery(project().place);
+                search(project().place, ['place']);
               }}
+              title={`search all projects for place: ${project().place}`}
             >
               {project().place}
             </span>
@@ -59,8 +57,11 @@ function Meta() {
             onClick={(event) => {
               event.preventDefault();
               event.stopPropagation();
-              setQuery(project().contributor);
+              search(project().contributor, ['contributor']);
             }}
+            title={`search all projects for contributor: ${
+              project().contributor
+            }`}
           >
             {project().contributor}
           </h6>
@@ -73,8 +74,9 @@ function Meta() {
                   onClick={(event) => {
                     event.preventDefault();
                     event.stopPropagation();
-                    setQuery(collaborator);
+                    search(collaborator, ['collaborators']);
                   }}
+                  title={`search all projects for collaborators: ${collaborator}`}
                 >
                   {collaborator}
                 </span>
@@ -88,8 +90,9 @@ function Meta() {
             onClick={(event) => {
               event.preventDefault();
               event.stopPropagation();
-              setQuery(project().home);
+              search(project().home, ['home']);
             }}
+            title={`search all projects for home: ${project().home}`}
           >
             {project().home}
           </p>
