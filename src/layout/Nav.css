@@ -1,7 +1,9 @@
 .prev-project {
   transform: rotate(180deg);
 }
-
+.next-project {
+  transform: translateY(-4px);
+}
 .prev-project,
 .next-project {
   font-size: 1.75em;
