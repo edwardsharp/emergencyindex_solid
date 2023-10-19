@@ -44,6 +44,7 @@ function Meta() {
                 search(project().place, ['place']);
               }}
               title={`search all projects for place: ${project().place}`}
+              tabIndex={0}
             >
               {project().place}
             </span>
@@ -62,6 +63,7 @@ function Meta() {
             title={`search all projects for contributor: ${
               project().contributor
             }`}
+            tabIndex={0}
           >
             {project().contributor}
           </h6>
@@ -77,6 +79,7 @@ function Meta() {
                     search(collaborator, ['collaborators']);
                   }}
                   title={`search all projects for collaborators: ${collaborator}`}
+                  tabIndex={0}
                 >
                   {collaborator}
                 </span>
@@ -93,6 +96,7 @@ function Meta() {
               search(project().home, ['home']);
             }}
             title={`search all projects for home: ${project().home}`}
+            tabIndex={0}
           >
             {project().home}
           </p>

@@ -14,6 +14,7 @@ function Nav() {
           class="nav-hover prev-project"
           onclick={() => prevProject()}
           title="previous project"
+          tabIndex={0}
         >
           ➪
         </div>
@@ -26,6 +27,7 @@ function Nav() {
           class="nav-hover"
           onclick={() => nextProject()}
           title="next project"
+          tabIndex={0}
         >
           ➪
         </div>
@@ -34,7 +36,7 @@ function Nav() {
       <div class="nav">
         <div class="title-container">
           {/* class="nav-hover"  */}
-          <div tabIndex={0}>
+          <div>
             <em class="emINDEX">
               <span>emergency</span>
               INDEX

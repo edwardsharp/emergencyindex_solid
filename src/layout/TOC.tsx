@@ -41,7 +41,11 @@ function TOC() {
     <Show
       when={showTOC()}
       fallback={
-        <div class="TOC nav-hover" onClick={() => setShowTOC(true)}>
+        <div
+          class="TOC nav-hover"
+          onClick={() => setShowTOC(true)}
+          tabIndex={0}
+        >
           p. {project()?.pages}
         </div>
       }
@@ -65,6 +69,7 @@ function TOC() {
               }}
               title={`${project.title} -- ${project.contributor}`}
               data-idx={idx()}
+              tabIndex={0}
             >
               <div class="volume-pages">
                 <div>{volume2VOL(project.volume)}</div>
