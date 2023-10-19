@@ -7,7 +7,7 @@ export function Query(props: { showCount?: boolean }) {
 
   return (
     <div>
-      <Show when={query()}>
+      <Show when={query()} fallback="all projects">
         {iconForSearchKeyLabel()} {query()}
       </Show>{' '}
       <span title={`browsing ${projects()?.length} projects`}>

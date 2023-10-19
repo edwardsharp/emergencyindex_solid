@@ -20,6 +20,7 @@ export function Search() {
   return (
     <div class="Search">
       <input
+        id="search-input"
         value={query() || ''}
         oninput={(event) => {
           // ah hmm, debounce this?
@@ -48,16 +49,14 @@ export function Search() {
           )}
         </span>
 
-        {!!query() && (
-          <button
-            title="clear search"
-            onClick={() => {
-              clearQuery();
-            }}
-          >
-            clear
-          </button>
-        )}
+        <button
+          title="clear search"
+          onClick={() => {
+            clearQuery();
+          }}
+        >
+          clear
+        </button>
       </div>
     </div>
   );

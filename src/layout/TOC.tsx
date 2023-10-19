@@ -6,14 +6,6 @@ import { volume2VOL } from '../utilz/utilz';
 import { useProject } from '../providers/projectContext';
 import Search from './Search';
 
-declare module 'solid-js' {
-  namespace JSX {
-    interface Directives {
-      clickOutside: () => any;
-    }
-  }
-}
-
 function TOC() {
   const {
     projects,
@@ -41,7 +33,10 @@ function TOC() {
       <div class="TOCListWrapper" use:clickOutside={() => setShowTOC(false)}>
         <Search />
 
-        <For each={projects()} fallback={<div>no projects!</div>}>
+        <For
+          each={projects()}
+          fallback={<div class="no-projects">no projects found!</div>}
+        >
           {(project, idx) => (
             <div
               class="TOCRow"

@@ -127,6 +127,10 @@ blockquote {
   margin-top: 1.5em;
 }
 
+.TOC-margin {
+  margin-right: 300px;
+}
+
 @media (max-width: 600px) {
   .Project .flex {
     flex-direction: column;
@@ -134,5 +138,9 @@ blockquote {
 
   .Project header {
     margin-bottom: 1em;
+  }
+
+  .TOC-margin {
+    margin-right: 0;
   }
 }
