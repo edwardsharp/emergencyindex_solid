@@ -2,15 +2,18 @@ import { Show } from 'solid-js';
 
 import { useProject } from '../providers/projectContext';
 
-export function Query() {
-  const { query, iconForSearchKeyLabel } = useProject();
+export function Query(props: { showCount?: boolean }) {
+  const { query, iconForSearchKeyLabel, projects } = useProject();
 
   return (
-    <Show when={query()}>
-      <div>
+    <div>
+      <Show when={query()}>
         {iconForSearchKeyLabel()} {query()}
-      </div>
-    </Show>
+      </Show>{' '}
+      <span title={`browsing ${projects()?.length} projects`}>
+        ({projects()?.length})
+      </span>
+    </div>
   );
 }
 

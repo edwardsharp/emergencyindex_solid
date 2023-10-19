@@ -9,6 +9,10 @@
 .page-bottom-nav > .prev-project {
   transform: rotate(180deg);
 }
+.page-bottom-nav > .query {
+  font-size: 0.5em;
+  display: none;;
+}
 /* .page-bottom-nav .browse {
   display: flex;
   flex-wrap: wrap;
@@ -84,6 +88,10 @@
 }
 
 @media (max-width: 600px) {
+  .page-bottom-nav > .query {
+    font-size: 0.4em;
+    display: flex;
+  }
   /* .page-bottom-nav .volume {
     font-size: 0.5em;
   } */

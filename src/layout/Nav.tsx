@@ -18,6 +18,9 @@ function Nav() {
         >
           ➪
         </div>
+        <div class="query">
+          <Query showCount />
+        </div>
         {/* <div class="browse">
           <For each={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}>
             {(volume) => <div class="volume nav-hover">VOL.{volume}</div>}
