@@ -162,6 +162,12 @@ function useProviderValue() {
     return mapIconToSearchKeyLabel(searchKeyLabel());
   }
 
+  function isFirstProject() {
+    return currentProjectIdx() <= 0;
+  }
+  function isLastProject() {
+    return currentProjectIdx() >= (projects()?.length || 0) - 1;
+  }
   return {
     projects,
     setProjects,
@@ -183,6 +189,8 @@ function useProviderValue() {
     showTOC,
     setShowTOC,
     iconForSearchKeyLabel,
+    isFirstProject,
+    isLastProject,
   };
 }
 

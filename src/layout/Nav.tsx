@@ -7,19 +7,29 @@ import Query from './Query';
 import TOC from './TOC';
 
 function Nav() {
-  const { project, prevProject, nextProject, showTOC, setShowTOC } =
-    useProject();
+  const {
+    project,
+    prevProject,
+    nextProject,
+    showTOC,
+    setShowTOC,
+    isFirstProject,
+    isLastProject,
+  } = useProject();
   return (
     <>
       <div class="page-bottom-nav">
-        <div
-          class="nav-hover prev-project"
-          onclick={() => prevProject()}
-          title="previous project"
-          tabIndex={0}
-        >
-          ➪
-        </div>
+        <Show when={!isFirstProject()} fallback={<div> </div>}>
+          <div
+            class="nav-hover prev-project"
+            onclick={() => prevProject()}
+            title="previous project"
+            tabIndex={0}
+          >
+            ➪
+          </div>
+        </Show>
+
         <div class="query">
           <Query showCount />
         </div>
@@ -28,14 +38,16 @@ function Nav() {
             {(volume) => <div class="volume nav-hover">VOL.{volume}</div>}
           </For>
         </div> */}
-        <div
-          class="nav-hover"
-          onclick={() => nextProject()}
-          title="next project"
-          tabIndex={0}
-        >
-          ➪
-        </div>
+        <Show when={!isLastProject()} fallback={<div> </div>}>
+          <div
+            class="nav-hover"
+            onclick={() => nextProject()}
+            title="next project"
+            tabIndex={0}
+          >
+            ➪
+          </div>
+        </Show>
       </div>
 
       <div class="nav">
