@@ -8,7 +8,12 @@ import {
 } from 'solid-js';
 import IProject from '../project/project.d';
 
-const fetchProjects = async () => (await fetch('/data.json')).json();
+const DATA_URL =
+  window.location.hostname === 'localhost'
+    ? '/data.json'
+    : 'https://index.alveol.us/data.json';
+
+const fetchProjects = async () => (await fetch(DATA_URL)).json();
 
 // search by project properties with this exactMatchOptions obj
 const defaultProjectKeys = [
