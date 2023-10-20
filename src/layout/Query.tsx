@@ -2,7 +2,7 @@ import { Show } from 'solid-js';
 
 import { useProject } from '../providers/projectContext';
 
-export function Query(props: { showCount?: boolean }) {
+export function Query() {
   const { query, iconForSearchKeyLabel, projects } = useProject();
 
   return (

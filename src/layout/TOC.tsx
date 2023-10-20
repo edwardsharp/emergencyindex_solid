@@ -1,4 +1,4 @@
-import { createEffect, createSignal, For, Show } from 'solid-js';
+import { createEffect, For, Show } from 'solid-js';
 import clickOutside from './click-outside';
 clickOutside;
 import './TOC.css';
