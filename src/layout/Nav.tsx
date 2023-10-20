@@ -132,7 +132,7 @@ function Nav() {
                 title="next project"
                 tabIndex={0}
               >
-                ➪
+                <span class="next-project-icon">➪</span>
               </div>
             </Show>
           </div>

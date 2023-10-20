@@ -1,8 +1,10 @@
 .prev-project {
   transform: rotate(180deg);
 }
-.next-project {
-  transform: translateY(-4px);
+.next-project-icon {
+  display: block;
+  /* oh css :/  should really use .svg for these iconz*/
+  transform: translateY(-3px);
 }
 .prev-project,
 .next-project {
